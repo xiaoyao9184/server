@@ -1,0 +1,30 @@
+{
+    "name"        : "lt",
+    "script"      : "./bin/server",
+    "args"        : [
+        "--port 2333",
+        "--grace-timeout 5000"
+    ],
+    "node_args": [
+        "-r",
+        "esm"
+    ],
+    "cwd"         : "./",
+    "watch": [
+      "**"
+    ],
+    "ignore_watch" : [
+      "bin",
+      "node_modules",
+      "logs",
+      "public"
+    ],
+    "watch_options": {
+      "followSymlinks": false
+    },
+    "error_file" : "./logs/lt-err.log",
+    "out_file"   : "./logs/lt-out.log",
+    "env": {
+        "NODE_ENV": "dev"
+    }
+  }

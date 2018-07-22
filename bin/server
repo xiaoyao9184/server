@@ -31,6 +31,11 @@ const argv = optimist
         default: 10,
         describe: 'maximum number of tcp sockets each client is allowed to establish at one time (the tunnels)'
     })
+    .options('grace-timeout', {
+        default: 1000,
+        describe: 'client is given a grace period in which they can connect before they are _removed_'
+    })
+    
     .argv;
 
 if (argv.help) {
@@ -42,6 +47,7 @@ const server = CreateServer({
     max_tcp_sockets: argv['max-sockets'],
     secure: argv.secure,
     domain: argv.domain,
+    grace_timeout: argv['grace-timeout'],
 });
 
 server.listen(argv.port, argv.address, () => {
